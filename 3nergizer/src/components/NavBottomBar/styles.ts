@@ -10,7 +10,6 @@ export const StyledNavBottomBar = styled.main`
 
   background-color: #06a37c;
 
-  border-radius: 0px 0px 36px 36px;
 `;
 
 export const StyledItemBottomBar = styled.div`
