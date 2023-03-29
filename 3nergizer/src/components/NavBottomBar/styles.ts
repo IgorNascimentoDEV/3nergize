@@ -21,5 +21,5 @@ export const StyledItemBottomBar = styled.div`
   align-items: center;
   flex-direction: column;
 
-  border: 1px dashed red;
+ 
 `;
