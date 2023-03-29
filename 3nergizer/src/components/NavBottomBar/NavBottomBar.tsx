@@ -23,9 +23,6 @@ const NavBottomBar = ({ }: NavBottomBarProps) => {
       <ItemBottomBar>
         <IoMdSettings size={40} color={'#fff'} />
       </ItemBottomBar>
-
-
-
     </S.StyledNavBottomBar>
   );
 };
