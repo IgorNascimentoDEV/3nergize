@@ -13,8 +13,9 @@ const GlobalStyle = createGlobalStyle`
     }
     body{
         //font-family: 'Catamaran', sans-serif;
-        font-family: 'Ubuntu', sans-serif;
-        //font-family: "Jost", sans-serif;
+        font-family: "Jost", sans-serif;
+        //font-family: 'Ubuntu', sans-serif;
+
     }
     button{
         outline: none;
