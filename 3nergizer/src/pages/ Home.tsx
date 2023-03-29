@@ -9,6 +9,7 @@ interface HomeProps {}
 const Home = ({}: HomeProps) => {
   return (
     <S.StyledHomePage>
+      
       <NavBottomBar />
     </S.StyledHomePage>
   );
