@@ -1,8 +1,3 @@
-
-
-
-
-
 function calcularContaEnergia() {
     let kwhConsumido = document.getElementById("inputNumero").value;
 
