@@ -19,21 +19,21 @@ const NavBottomBar = ({}: NavBottomBarProps) => {
     <S.StyledNavBottomBar>
       <Link to="/">
         {/*Home icon*/}
-        <ItemBottomBar name="Home">
+        <ItemBottomBar name="Inicio">
           <AiFillHome size={40} color={"#fff"} />
         </ItemBottomBar>
       </Link>
 
       <Link to="/Calculator">
         {/*Calculator icon*/}
-        <ItemBottomBar name="Calculator">
+        <ItemBottomBar name="Calculadora">
           <AiTwotonePieChart size={40} color={"#fff"} />
         </ItemBottomBar>
       </Link>
 
       <Link to="/Analysis">
         {/*Analysis icon*/}
-        <ItemBottomBar name="Analysis">
+        <ItemBottomBar name="Análise">
           <HiDocumentSearch size={40} color={"#fff"} />
         </ItemBottomBar>
       </Link>
