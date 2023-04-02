@@ -3,13 +3,14 @@ import * as S from "./styles";
 
 interface ItemBottomBarProps {
   children: React.ReactNode;
+  name?: string;
 }
 
-const ItemBottomBar = ({children}:ItemBottomBarProps) => {
+const ItemBottomBar = ({ children, name }: ItemBottomBarProps) => {
   return (
     <S.StyledItemBottomBar>
       <i>{children}</i>
-      <p></p>
+      <p>{name}</p>
     </S.StyledItemBottomBar>
   );
 };
