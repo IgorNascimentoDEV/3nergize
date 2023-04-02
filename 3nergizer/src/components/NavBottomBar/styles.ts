@@ -21,5 +21,10 @@ export const StyledItemBottomBar = styled.div`
   align-items: center;
   flex-direction: column;
 
+  p{
+    text-decoration: none;
+    color: whitesmoke;
+  }
+
  
 `;
