@@ -17,21 +17,21 @@ interface NavBottomBarProps {}
 const NavBottomBar = ({}: NavBottomBarProps) => {
   return (
     <S.StyledNavBottomBar>
-      <Link to="/">
+      <Link to="/" className="hvr-float">
         {/*Home icon*/}
         <ItemBottomBar name="Inicio">
           <AiFillHome size={40} color={"#fff"} />
         </ItemBottomBar>
       </Link>
 
-      <Link to="/Calculator">
+      <Link to="/Calculator" className="hvr-float">
         {/*Calculator icon*/}
         <ItemBottomBar name="Calculadora">
           <AiTwotonePieChart size={40} color={"#fff"} />
         </ItemBottomBar>
       </Link>
 
-      <Link to="/Analysis">
+      <Link to="/Analysis" className="hvr-float">
         {/*Analysis icon*/}
         <ItemBottomBar name="Análise">
           <HiDocumentSearch size={40} color={"#fff"} />
