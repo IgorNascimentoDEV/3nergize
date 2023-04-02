@@ -7,7 +7,7 @@ import ItemBottomBar from "./ItemBottomBar";
 //Icons
 import { AiFillHome } from "react-icons/ai";
 import { AiTwotonePieChart } from "react-icons/ai"
-import { IoMdSettings } from "react-icons/io"
+import  {HiDocumentSearch} from "react-icons/hi"
 
 interface NavBottomBarProps { }
 
@@ -21,7 +21,7 @@ const NavBottomBar = ({ }: NavBottomBarProps) => {
       <AiTwotonePieChart size={40} color={'#fff'} />
         </ItemBottomBar>
       <ItemBottomBar>
-        <IoMdSettings size={40} color={'#fff'} />
+        <HiDocumentSearch size={40} color={'#fff'} />
       </ItemBottomBar>
     </S.StyledNavBottomBar>
   );
