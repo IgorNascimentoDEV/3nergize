@@ -1,10 +1,21 @@
 import React from "react";
 import * as S from "./styles";
 
-interface SearchProps {}
+interface SearchProps {
+  amount:string;
+}
 
-const Search = ({}: SearchProps) => {
-  return <S.StyledSearch></S.StyledSearch>;
+const Search = ({amount}: SearchProps) => {
+  return (
+    <S.StyledSearch>
+      <span>
+        <p>Gasto Atual</p>
+      </span>
+      <span>
+        R${amount}
+      </span>
+    </S.StyledSearch>
+  );
 };
 
 export default Search;
