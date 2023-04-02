@@ -2,7 +2,7 @@ import React from "react";
 import * as S from "./styles";
 
 interface SearchProps {
-  amount:string;
+  amount:string | number;
 }
 
 const Search = ({amount}: SearchProps) => {
