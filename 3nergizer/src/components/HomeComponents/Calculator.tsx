@@ -10,26 +10,26 @@ const Calculator = ({ onSubmit = () => {} }) => {
   const [number2, setNumber2] = useState(0);
   const [result, setResult] = useState(localStorage.getItem('calcResult') || 0);
   
-  const handleDateChange1 = (event) => {
+  const handleDateChange1 = (event:any) => {
     setDate1(event.target.value);
     localStorage.setItem("date1", event.target.value);
   };
   
   
-  const handleNumberChange1 = (event) => {
+  const handleNumberChange1 = (event:any) => {
     setNumber1(event.target.value);
     localStorage.setItem("number1", event.target.value);
   };
   
-  const handleDateChange2 = (event) => {
+  const handleDateChange2 = (event:any) => {
     setDate2(event.target.value);
   };
   
-  const handleNumberChange2 = (event) => {
+  const handleNumberChange2 = (event:any) => {
     setNumber2(event.target.value);
   };
   
-  const handleSubmit = (event) => {
+  const handleSubmit = (event:any) => {
     event.preventDefault();
     let calcResult = number2 - number1;
     setResult(calcResult);
