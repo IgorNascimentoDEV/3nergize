@@ -24,4 +24,13 @@ export const StyledSearch = styled.div`
     line-height: 38px;
     color: #06a37c;
   }
+
+ 
+`;
+export const Styledbutton = styled.button`
+
+button {
+  border: solid 1px black;
+}
+
 `;
