@@ -20,7 +20,7 @@ const Home = ({}: HomeProps) => {
 };
 
 export function teste(): number{
-  return 400;
+  return 50;
 }
 
 export default Home;
