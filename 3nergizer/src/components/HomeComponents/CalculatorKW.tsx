@@ -2,13 +2,14 @@ import React, { useState } from "react";
 import * as S from "./styles";
 
 
-const Calculator = ({ onSubmit = () => {} }) => {
+const CalculatorKW = ({ onSubmit = () => {} }) => {
 
   const [date1, setDate1] = useState(localStorage.getItem("date1") || "");
-  const [number1, setNumber1] = useState(localStorage.getItem("number1") || null);
+  const [number1, setNumber1] = useState(localStorage.getItem("number1") || 0);
   const [date2, setDate2] = useState("");
   const [number2, setNumber2] = useState(0);
   const [result, setResult] = useState(localStorage.getItem('calcResult') || 0);
+
   
   const handleDateChange1 = (event:any) => {
     setDate1(event.target.value);
@@ -65,4 +66,4 @@ const Calculator = ({ onSubmit = () => {} }) => {
   );
 };
 
-export default Calculator;
+export default CalculatorKW;
