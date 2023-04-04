@@ -7,10 +7,10 @@ interface CalculatorProps {}
 
 const Calculator = ({}: CalculatorProps) => {
   return (
-    <S.StyledCalculator>
-
+    <S.StyledCalculatorPage>
+tela de Calculator 
       <NavBottomBar />
-    </S.StyledCalculator>
+    </S.StyledCalculatorPage>
   );
 };
 
