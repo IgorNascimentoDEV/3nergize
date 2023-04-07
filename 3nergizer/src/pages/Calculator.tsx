@@ -6,9 +6,9 @@ import NavBottomBar from "../components/NavBottomBar/NavBottomBar";
 interface CalculatorProps {}
 
 const Calculator = ({}: CalculatorProps) => {
+
   return (
-    <S.StyledCalculatorPage>
-tela de Calculator 
+
       <NavBottomBar />
     </S.StyledCalculatorPage>
   );

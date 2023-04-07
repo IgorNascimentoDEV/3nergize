@@ -9,7 +9,7 @@ export const StyledHomePage = styled.section`
   background-color: #F6F1F1;
 `;
 
-export const StyledCalculatorPage = styled.section`
+export const StyledCalculator = styled.section`
   display: flex;
   flex-direction: column;
   justify-content: space-between;
