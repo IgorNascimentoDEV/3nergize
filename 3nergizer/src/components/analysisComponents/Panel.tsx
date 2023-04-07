@@ -4,19 +4,18 @@ import * as S from "./styles";
 interface PanelProps {
 }
 
+import logo from '../../assets/logo.svg';
+
 const Panel = ({}: PanelProps) => {
   return (
     <S.StyledPanel>
-      <span>
-        <p>Gasto Atual</p>
-      </span>
-      <span>
+        <p>Entenda Sua Conta</p>
         <i>
-          icone
+          <img src={logo} alt="" />
         </i>
-      </span>
     </S.StyledPanel>
   );
 };
 
 export default Panel;
+ 
