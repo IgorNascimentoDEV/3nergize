@@ -1,3 +1,6 @@
+ 
+ 
+ 
  // Captura os elementos HTML dos inputs
  const leituraInicialInput = document.getElementById('leituraInicial');
  const dataInicialInput = document.getElementById('dataInicial');
