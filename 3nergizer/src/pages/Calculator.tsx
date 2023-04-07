@@ -6,11 +6,11 @@ import NavBottomBar from "../components/NavBottomBar/NavBottomBar";
 interface CalculatorProps {}
 
 const Calculator = ({}: CalculatorProps) => {
-
   return (
-
+    <S.StyledCalculator>
+tela de Calculator 
       <NavBottomBar />
-    </S.StyledCalculatorPage>
+    </S.StyledCalculator>
   );
 };
 
