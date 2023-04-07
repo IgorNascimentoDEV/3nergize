@@ -36,11 +36,12 @@ export const StyledAnalisyPanel = styled.div`
   justify-content: space-between;
 
   box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
-border-radius: 5px;
+  border-radius: 5px;
 
 `;
 
 export const StyledAnalisyPanelItem = styled.div`
+
   width: 45%;
   margin: 5px;
 
@@ -49,13 +50,12 @@ export const StyledAnalisyPanelItem = styled.div`
   justify-content: space-between;
 
 
-
   header{
     display: flex;
     justify-content: center;
     align-items: center;
     height: 20%;
-    background: #06A37C;
+   // background: #06A37C;
 
     p{
       font-weight: bold;
@@ -65,14 +65,13 @@ export const StyledAnalisyPanelItem = styled.div`
     }
   }
 
-
   article{
     display: flex;
     flex-direction: column;
     justify-content: space-around;
     align-items: center;
     height: 60%;
-    background: #DED9D9;
+    //background: #DED9D9;
 
     p{
       font-size: 12px;
@@ -82,6 +81,7 @@ export const StyledAnalisyPanelItem = styled.div`
     img{
       width: 40px;
     }
+    
   }
 
   footer{
@@ -89,7 +89,7 @@ export const StyledAnalisyPanelItem = styled.div`
     justify-content: center;
     align-items: center;
     height: 20%;
-    background-color: #06A37C;
+//  background-color: #06A37C;
 
     p{
       font-weight: bold;

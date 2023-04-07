@@ -14,11 +14,46 @@ interface AnalisyPanelProps {}
 const AnalisyPanel = ({}: AnalisyPanelProps) => {
   return (
     <S.StyledAnalisyPanel>
-      <AnalisyPanelItem value={50} name="GERAÇÃO" img={water} rate={41} />
-      <AnalisyPanelItem value={50} name="TRANSMISSÃO" img={tower} rate={3}/>
-      <AnalisyPanelItem value={50} name="DISTRIBUIÇÃO" img={building} rate={16}/>
-      <AnalisyPanelItem value={50} name="ENCARGOS" img={hand} rate={9}/>
-      <AnalisyPanelItem value={50} name="TRIBUTOS" img={file} rate={12}/>
+      <AnalisyPanelItem
+        value={50}
+        name="GERAÇÃO"
+        img={water}
+        rate={41}
+        headerColor="#06A37C"
+        botttomColor="#06A37C"
+      />
+      <AnalisyPanelItem
+        value={50}
+        name="TRANSMISSÃO"
+        img={tower}
+        rate={3}
+        headerColor="#72AFA0"
+        botttomColor="#72AFA0"
+      />
+      <AnalisyPanelItem
+        value={50}
+        name="DISTRIBUIÇÃO"
+        img={building}
+        rate={16}
+        headerColor="#2A6B39"
+        botttomColor="#2A6B39"
+      />
+      <AnalisyPanelItem
+        value={50}
+        name="ENCARGOS"
+        img={hand}
+        rate={9}
+        headerColor="#C96923"
+        botttomColor="#C96923"
+      />
+      <AnalisyPanelItem
+        value={50}
+        name="TRIBUTOS"
+        img={file}
+        rate={12}
+        headerColor="#A30606"
+        botttomColor="#A30606"
+      />
     </S.StyledAnalisyPanel>
   );
 };

@@ -1,12 +1,14 @@
 import React from 'react';
 import * as S from './styles'
+import { CSSProperties } from 'styled-components';
 
 interface AnalisyPanelItemProps {
     value?: number;
     name?: string;
     img?: string;
     rate?: number;
-    children?:React.ReactNode
+    headerColor?:string;
+    botttomColor?:string;
   }
   
   const AnalisyPanelItem = ({
@@ -14,21 +16,21 @@ interface AnalisyPanelItemProps {
     name,
     img,
     rate,
-    children
+    headerColor,
+    botttomColor
   }: AnalisyPanelItemProps) => {
     return (
       <S.StyledAnalisyPanelItem>
-        {children}
-        <header  className="ge">
+        <header style={{backgroundColor:headerColor}}>
           <p>R${value}</p>
         </header>
   
-        <article className="ge tr di en tr">
+        <article>
           <p>{name}</p>
           <img src={img} alt="" />
         </article>
   
-        <footer className="ge tr di en tr">
+        <footer style={{backgroundColor:botttomColor}}>
           <p>{rate}%</p>
         </footer>
       </S.StyledAnalisyPanelItem>
