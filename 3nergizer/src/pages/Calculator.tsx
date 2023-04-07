@@ -14,4 +14,4 @@ tela de Calculator
   );
 };
 
-export default Calculator;
+
