@@ -47,20 +47,20 @@ const dataKey = 'dateData';
 const kw2Key = 'kw2Data';
 const data2Key = 'date2Data';
 
-// Adiciona um evento de mudança para cada input
-kwInput.addEventListener('change', () => {
-  localStorage.setItem(kwKey, kwInput.value);
-});
+// // Adiciona um evento de mudança para cada input
+// kwInput.addEventListener('change', () => {
+//   localStorage.setItem(kwKey, kwInput.value);
+// });
 
-dataInput.addEventListener('change', () => {
-  localStorage.setItem(dataKey, dataInput.value);
-});
+// dataInput.addEventListener('change', () => {
+//   localStorage.setItem(dataKey, dataInput.value);
+// });
 
-kw2Input.addEventListener('change', () => {
-  localStorage.setItem(kw2Key, kw2Input.value);
-});
+// kw2Input.addEventListener('change', () => {
+//   localStorage.setItem(kw2Key, kw2Input.value);
+// });
 
-data2Input.addEventListener('change', () => {
-  localStorage.setItem(data2Key, data2Input.value);
-});
+// data2Input.addEventListener('change', () => {
+//   localStorage.setItem(data2Key, data2Input.value);
+// });
 export default Calculator;
