@@ -2,13 +2,15 @@ import React from "react";
 import * as S from "./StylesPage";
 
 import NavBottomBar from "../components/NavBottomBar/NavBottomBar";
+import Panel from "../components/analysisComponents/Panel";
+
 
 interface AnalysisProps {}
 
 const Analysis = ({}: AnalysisProps) => {
   return (
     <S.StyledAnalysisPage>
-      <p>pagina de analise</p>
+      <Panel/>
       <NavBottomBar />
     </S.StyledAnalysisPage>
   );
