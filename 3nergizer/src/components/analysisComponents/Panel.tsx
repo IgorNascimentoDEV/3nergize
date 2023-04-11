@@ -1,15 +1,19 @@
 import React from "react";
 import * as S from "./styles";
 
-interface PanelProps {
-}
+
 
 import logo from '../../assets/logo.svg';
 
-const Panel = ({}: PanelProps) => {
+interface PanelProps {
+  title: string;
+}
+
+
+const Panel = ({ title }: PanelProps) => {
   return (
     <S.StyledPanel>
-        <p>Entenda Sua Conta</p>
+        <p>{title}</p>
         <i>
           <img src={logo} alt="" />
         </i>

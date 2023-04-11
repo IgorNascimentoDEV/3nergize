@@ -11,7 +11,7 @@ interface AnalysisProps {}
 const Analysis = ({}: AnalysisProps) => {
   return (
     <S.StyledAnalysisPage>
-      <Panel/>
+      <Panel title="Entenda sua conta"/>
       <AnalisyPanel/>
       <NavBottomBar />
     </S.StyledAnalysisPage>
