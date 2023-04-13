@@ -25,44 +25,47 @@ const AnalisyPanel = ({}: AnalisyPanelProps) => {
   let valor = myValue;
   let valorTotal = parseInt(valor)
 
-  let i = valorTotal * 0.40;
+  let g = valorTotal * 0.40; //geração
+  let t = valorTotal * 0.03 //transmissão
+  let d = valorTotal * 0.16 //distribuição
+  let e = valorTotal * 0.09 //encargos
+  let tri =valorTotal * 0.31 // tributos
   
-
   return (
     <S.StyledAnalisyPanel>
       <AnalisyPanelItem
-        value={i.toFixed(2)}
+        value={g.toFixed(2)}
         name="GERAÇÃO"
         img={water}
         rate={41}
         Color="#06A37C"
       />
       <AnalisyPanelItem
-        value={valorTotal * 0.03}
+        value={t.toFixed(2)}
         name="TRANSMISSÃO"
         img={tower}
         rate={3}
         Color="#72AFA0"
       />
       <AnalisyPanelItem
-        value={valorTotal * 0.16}
+        value={d.toFixed(2)}
         name="DISTRIBUIÇÃO"
         img={building}
         rate={16}
         Color="#2A6B39"
       />
       <AnalisyPanelItem
-        value={valorTotal * 0.09}
+        value={e.toFixed(2)}
         name="ENCARGOS"
         img={hand}
         rate={9}
         Color="#C96923"
       />
       <AnalisyPanelItem
-        value={valorTotal * 0.31}
+        value={e.toFixed(2)}
         name="TRIBUTOS"
         img={file}
-        rate={12}
+        rate={31}
         Color="#A30606"
       />
     </S.StyledAnalisyPanel>
