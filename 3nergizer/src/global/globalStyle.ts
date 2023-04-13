@@ -15,7 +15,8 @@ const GlobalStyle = createGlobalStyle`
         //font-family: 'Catamaran', sans-serif;
         //font-family: "Jost", sans-serif;
         //font-family: 'Ubuntu', sans-serif;
-        font-family: 'Raleway', sans-serif;
+        //font-family: 'Raleway', sans-serif;
+        font-family: 'Poppins', sans-serif;
     }
     button{
         outline: none;
