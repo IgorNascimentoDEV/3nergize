@@ -16,3 +16,5 @@ const ItemBottomBar = ({ children, name }: ItemBottomBarProps) => {
 };
 
 export default ItemBottomBar;
+
+

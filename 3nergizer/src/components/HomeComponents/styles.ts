@@ -11,7 +11,7 @@ export const StyledSearch = styled.div`
   display: flex;
   justify-content: space-between;
   align-items: center;
-
+  
   span {
     p {
       font-weight: 400;
@@ -19,7 +19,7 @@ export const StyledSearch = styled.div`
       color: #5e5e5f;
     }
   }
-
+  
   span {
     font-weight: 400;
     font-size: 24px;
@@ -28,8 +28,8 @@ export const StyledSearch = styled.div`
   }
 `;
 
-export const Styledbutton = styled.button
-``;
+export const Styledbutton = styled.button`
+`;
 
 export const StyledApresentation = styled.div`
   display: flex;
@@ -89,6 +89,11 @@ export const StyledBottomSearch = styled.div`
   border-radius: 10px;
 
   cursor: pointer;
+
+  h6{
+    color: #5e5e5f;
+  }
+
 `;
 
 
