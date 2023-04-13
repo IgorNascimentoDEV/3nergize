@@ -16,13 +16,15 @@ const Search = ({amount}: SearchProps) => {
     }
   }, []);
 
+  let valor = parseInt(myValue);
+  
   return (
     <S.StyledSearch>
       <span>
         <p>Gasto Atual</p>
       </span>
       <span>
-        R${myValue}
+        R${valor.toFixed(2)}
       </span>
     </S.StyledSearch>
   );

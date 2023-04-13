@@ -203,7 +203,7 @@ const handleButtonClick = () => {
         <S.StyledDisplayValor>
           <div>
             <h3>Valor</h3>
-            <p>{`R$${novoValorTotal}`}</p>
+            <p>{`R$${novoValorTotal.toFixed(2)}`}</p>
           </div>
         </S.StyledDisplayValor>
       </S.StyledDisplayWrapper>
