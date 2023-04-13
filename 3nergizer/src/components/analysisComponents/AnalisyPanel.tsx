@@ -25,12 +25,13 @@ const AnalisyPanel = ({}: AnalisyPanelProps) => {
   let valor = myValue;
   let valorTotal = parseInt(valor)
 
+  let i = valorTotal * 0.40;
   
 
   return (
     <S.StyledAnalisyPanel>
       <AnalisyPanelItem
-        value={valorTotal * 0.40}
+        value={i.toFixed(2)}
         name="GERAÇÃO"
         img={water}
         rate={41}
