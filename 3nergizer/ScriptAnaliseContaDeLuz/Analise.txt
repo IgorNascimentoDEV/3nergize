@@ -1,0 +1,41 @@
+Análise da conta de energia elétrica
+
+Para calcular o valor de cada componente da conta de energia elétrica com base nas porcentagens fornecidas, primeiro é necessário saber o valor total da fatura. Suponha que o valor total da fatura seja R$ 100.
+
+Geração: 41% de R$ 100 = R$ 41
+Transmissão: 3% de R$ 100 = R$ 3
+Distribuição: 16% de R$ 100 = R$ 16
+Encargos: 9% de R$ 100 = R$ 9
+Tributos: 31% de R$ 100 = R$ 31
+
+Portanto, com base nas porcentagens fornecidas, a fatura é composta pelos seguintes valores:
+
+Geração: R$ 41
+Transmissão: R$ 3
+Distribuição: R$ 16
+Encargos: R$ 9
+Tributos: R$ 31
+
+O valor das taxas depende da bandeira tarifária da conta de energia elétrica. As bandeiras tarifárias indicam se a energia está mais cara (bandeira vermelha ou amarela) ou mais barata (bandeira verde) devido a fatores como a escassez de chuvas e o uso de usinas termelétricas para gerar energia. As taxas associadas a cada bandeira são atualizadas a cada mês e podem variar de acordo com a região do país.
+
+Bandeira verde: não há taxa adicional
+Bandeira amarela: taxa adicional de R$ 0,01343 por kWh consumido
+Bandeira vermelha - Patamar 1: taxa adicional de R$ 0,04169 por kWh consumido
+Bandeira vermelha - Patamar 2: taxa adicional de R$ 0,06243 por kWh consumido
+
+Portanto, para calcular o valor total da conta de energia elétrica, é necessário multiplicar o consumo em kWh pelo valor da tarifa correspondente à bandeira tarifária do mês, somar os valores correspondentes a cada componente da fatura e adicionar a taxa adicional correspondente à bandeira tarifária.
+
+
+Exemplo, Bandeira amarela: taxa adicional de R$ 0,01343 por kWh consumido. Nesse caso, precisamos multiplicar o consumo em kWh pelo valor da tarifa correspondente à bandeira tarifária do mês, somar os valores correspondentes a cada componente da fatura e adicionar a taxa adicional correspondente à bandeira tarifária. Suponha que o valor total da fatura seja R$ 100 e que a tarifa correspondente à bandeira amarela seja de R$ 0,30 por kWh. Nesse caso, o cálculo seria:
+
+Consumo: 200 kWh x R$ 0,30/kWh = R$ 60
+Geração: 41% de R$ 60 = R$ 24,60
+Transmissão: 3% de R$ 60 = R$ 1,80
+Distribuição: 16% de R$ 60 = R$ 9,60
+Encargos: 9% de R$ 60 = R$ 5,40
+Tributos: 31% de R$ 60 = R$ 18,60
+Taxa adicional: R$ 0,01343/kWh x 200 kWh = R$ 2,69
+Portanto, a conta de energia elétrica seria de R$ 62,69.
+Bandeira vermelha - Patamar 1: taxa adicional de R$ 0,04169 por kWh consumido. Nesse caso, suponha que a tarifa correspondente à bandeira vermelha - Patamar 1 seja de R$ 0,40 por kWh. O cálculo seria:
+
+Consumo: 200 kWh x R$ 0,40/kWh = R$ 80
