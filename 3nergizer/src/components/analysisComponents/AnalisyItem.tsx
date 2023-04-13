@@ -3,7 +3,7 @@ import * as S from './styles'
 import { CSSProperties } from 'styled-components';
 
 interface AnalisyPanelItemProps {
-  value?: number;
+  value?: any;
   name?: string;
   img?: string;
   rate?: number;
