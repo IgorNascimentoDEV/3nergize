@@ -2,10 +2,15 @@ import React, { useState, useRef, useEffect } from 'react';
 import * as S from './styles';
 
 const Inputs: React.FC = () => {
+
+
+
 const leituraInicialRef = useRef<HTMLInputElement>(null);
 const dataInicialRef = useRef<HTMLInputElement>(null);
 const leituraFinalRef = useRef<HTMLInputElement>(null);
 const dataFinalRef = useRef<HTMLInputElement>(null);
+
+
 
 
 
@@ -57,6 +62,8 @@ throw new Error('Failed to fetch tarifa bandeira data');
 }
 
 };
+
+
 useEffect(() => {
   const getTarifaData = async () => {
     const tarifa = await fetchApiDataTarifa();
@@ -87,78 +94,144 @@ const [tarifaConsumo, setTarifaConsumo] = useState<number | null>(null);
 const [tarifaBandeira, setTarifaBandeira] = useState<number | null>(null);
 
 
-const handleButtonClick = () => {
-const leituraInicial: number = Number(leituraInicialRef.current?.value);
-const leituraFinal: number = Number(leituraFinalRef.current?.value);
-const dataInicial: Date = new Date(dataInicialRef.current?.value || '');
-const dataFinal: Date = new Date(dataFinalRef.current?.value || '');
 
-  
-    // Calcula a quantidade de dias entre as datas de leitura
-    const periodoDias: number = Math.ceil((dataFinal.getTime() - dataInicial.getTime()) / (1000 * 60 * 60 * 24));
-  
-    // Calcula o consumo de energia em kWh
-    const consumo: number = leituraFinal - leituraInicial;
-  
-    // Calcula o valor da conta de energia elétrica
-    const taxaConsumoNumber: number = Number(tarifaConsumo);
-    const taxaIluminacaoNumber: number = Number(taxaIluminacao); 
-    const valorConsumo: number = (taxaConsumoNumber / 10) * consumo;
-    const valorTotal: number = valorConsumo + taxaIluminacaoNumber;
-  
-    // Salva o resultado no local storage
-    const simulacao: { periodo: string, consumo: string, valorTotal: string, tarifa: string, taxaIluminacao: string, dias: string } = {
-      periodo: `${dataInicial.toLocaleDateString()} a ${dataFinal.toLocaleDateString()}`,
-      consumo: `${consumo} kWh`,
-      valorTotal: `R$ ${valorTotal.toFixed(2)}`,
-      tarifa:`${tarifaConsumo}`,
-      taxaIluminacao:`${taxaIluminacao}`,
-      dias:`${periodoDias} Dias`
-    };
-    localStorage.setItem('simulacao', JSON.stringify(simulacao));
+
+let consumo = 0;
+const [consumoAtual, setConsumoAtual] = useState(consumo);
+
+let periodoDias = 0;
+const [Dias, setDias] = useState(periodoDias);
+
+let valorTotal = 0;
+const [novoValorTotal, setnovoValorTotal] = useState(consumo);
+
+let valorInicial = Number(localStorage.getItem('leituraInicial')) || null;
+const [novoValorInicial, setnovoValorInicial] = useState(valorInicial);
+
+
+const handleButtonClick = () => {
+  const leituraInicial: number = Number(leituraInicialRef.current?.value);
+  setnovoValorInicial(leituraInicial);
+  const leituraFinal: number = Number(leituraFinalRef.current?.value);
+  const dataInicial: Date = new Date(dataInicialRef.current?.value || '');
+  const dataFinal: Date = new Date(dataFinalRef.current?.value || '');
+
+  // Calcula a quantidade de dias entre as datas de leitura
+  const periodoDias = Math.ceil((dataFinal.getTime() - dataInicial.getTime()) / (1000 * 60 * 60 * 24));
+  setDias(periodoDias);
+
+  // Calcula o consumo de energia em kWh
+  const consumo = leituraFinal - leituraInicial;
+  setConsumoAtual(consumo);
+
+  // Calcula o valor da conta de energia elétrica
+  const taxaConsumoNumber: number = Number(tarifaConsumo);
+  const taxaIluminacaoNumber: number = Number(taxaIluminacao); 
+  const valorConsumo: number = (taxaConsumoNumber / 10) * consumo;
+  const valorTotal = valorConsumo + taxaIluminacaoNumber;
+  setnovoValorTotal(valorTotal);
+
+  // Salva o resultado no local storage
+  const simulacao: { periodo: string, consumo: string, valorTotal: string, tarifa: string, taxaIluminacao: string, dias: string } = {
+    periodo: `${dataInicial.toLocaleDateString()} a ${dataFinal.toLocaleDateString()}`,
+    consumo: `${consumo} kWh`,
+    valorTotal: `R$ ${valorTotal.toFixed(2)}`,
+    tarifa:`${tarifaConsumo}`,
+    taxaIluminacao:`${taxaIluminacao}`,
+    dias:`${periodoDias} Dias`
   };
 
+  // Armazena os valores imediatamente após o clique do botão
+  localStorage.setItem('simulacao', JSON.stringify(simulacao));
+  localStorage.setItem('consumo', JSON.stringify(consumo));
+  localStorage.setItem('periodoDias', JSON.stringify(periodoDias));
+  localStorage.setItem('valorTotal', JSON.stringify(valorTotal));
+  localStorage.setItem('leituraInicial', leituraInicial.toString());
+  localStorage.setItem('dataInicial', dataInicial.toISOString());
+};
+
+  
+
+  useEffect(() => {
+    const consumoSalvo = JSON.parse(localStorage.getItem('consumo') || 'null');
+    const diasSalvos = JSON.parse(localStorage.getItem('periodoDias') || 'null');
+    const valorSalvo = JSON.parse(localStorage.getItem('valorTotal') || 'null');
+
+    
+    
+
+    if (consumoSalvo !== null) {
+      setConsumoAtual(consumoSalvo);
+    }
+  
+    if (diasSalvos !== null) {
+      setDias(diasSalvos);
+    }
+  
+    if (valorSalvo !== null) {
+      setnovoValorTotal(valorSalvo);
+    }
 
 
+  }, []);
 
+  useEffect(() => {
+    const dataInicialSalva = localStorage.getItem('dataInicial');
+    if (dataInicialSalva) {
+      const dataInicial = new Date(dataInicialSalva);
+      dataInicialRef.current.value = dataInicial.toISOString().slice(0, 10);
+    }
+  }, []);
+  
+ 
 
   return (
 
    
     <div>
-    <S.StyledDisplayWrapper>
+     <S.StyledDisplayWrapper>
         <S.StyledDisplaykW>
-    <div>
-        <h3>Consumo Atual</h3>
-        <p style={{fontWeight: 'bold'}}>{`${(Number(leituraFinalRef) - Number(leituraInicialRef)).toFixed(2)} kWh`}</p>
-        <p>{`Periodo: $ Dias`}</p>
-    </div>
+          <div>
+            <h3>Consumo Atual</h3>
+            <p style={{ fontWeight: 'bold' }}>{`${consumoAtual} kWh`}</p>
+            <p>{`Periodo: ${Dias} Dias`}</p>
+          </div>
         </S.StyledDisplaykW>
 
         <S.StyledDisplayValor>
-    <div>
-        <h3>Valor</h3>
-        <p>R$148,20</p>
-    </div>
-         </S.StyledDisplayValor>
-    </S.StyledDisplayWrapper>
+          <div>
+            <h3>Valor</h3>
+            <p>{`R$${novoValorTotal}`}</p>
+          </div>
+        </S.StyledDisplayValor>
+      </S.StyledDisplayWrapper>
 
 
     <S.StyledInputs>
+      <div>
       <label htmlFor="leituraInicial">Valor Inicial (kW):</label>
-      <input type="number" id="leituraInicial" ref={leituraInicialRef} placeholder="Insira o valor inicial em kW" title="Valor Inicial (kW)" />
-
-      <label htmlFor="dataInicial">Data Inicial:</label>
-      <input type="date" id="dataInicial" ref={dataInicialRef} placeholder="" title="" />
-
+      <input type="number" id="leituraInicial" ref={leituraInicialRef} placeholder="Insira o valor inicial em kW" title="Valor Inicial (kW)" defaultValue={valorInicial}/>
       <label htmlFor="leituraFinal">Valor Atual (kW):</label>
       <input type="number" id="leituraFinal" ref={leituraFinalRef} placeholder="Insira o valor inicial em kW" title="Valor Inicial (kW)" />
 
-      <label htmlFor="dataFinal">Data Inicial:</label>
+
+
+     
+      </div>
+      
+      <div>
+      <label htmlFor="dataInicial">Data Inicial:</label>
+      <input type="date" id="dataInicial" ref={dataInicialRef} placeholder="" title="" />
+      <label htmlFor="dataFinal">Data Final:</label>
       <input type="date" id="dataFinal" ref={dataFinalRef} placeholder="" title="" />
+  
+
+
+      
+      </div>
 
       <button type='submit' onClick={handleButtonClick}>Verificar</button>
-</S.StyledInputs>
+    </S.StyledInputs>
 
    
    
