@@ -1,78 +1,239 @@
-import React, { useState, ChangeEvent } from 'react';
-import * as S from "./styles";
+import React, { useState, useRef, useEffect } from 'react';
+import * as S from './styles';
 
 const Inputs: React.FC = () => {
-  const [date1, setDate1] = useState<string>('');
-  const [date2, setDate2] = useState<string>('');
-  const [num1, setNum1] = useState<string>('');
-  const [num2, setNum2] = useState<string>('');
 
-  const handleDate1Change = (e: ChangeEvent<HTMLInputElement>) => {
-    setDate1(e.target.value);
+
+
+const leituraInicialRef = useRef<HTMLInputElement>(null);
+const dataInicialRef = useRef<HTMLInputElement>(null);
+const leituraFinalRef = useRef<HTMLInputElement>(null);
+const dataFinalRef = useRef<HTMLInputElement>(null);
+
+
+
+
+// Consuming the electricity sector api
+const fetchApiDataTarifa = async (): Promise<number> => {
+try {
+const response = await fetch(
+'https://apise.way2.com.br/v1/tarifas?apikey=2163780d87ee4237884c498ece5ea7cc&agente=CELPE&ano=2022'
+);
+const data = await response.json();
+const tarifademandatusd: number = data[0].tarifaconsumotusd;
+setTarifaConsumo(tarifademandatusd);
+return tarifademandatusd;
+} catch (error) {
+console.log(error);
+throw new Error('Failed to fetch tarifa data');
+}
+};
+
+//taxaIluminacao
+const fetchApiDataTarifaBase = async (): Promise<number> => {
+try {
+const response = await fetch(
+'https://apise.way2.com.br/v1/tarifas?apikey=2163780d87ee4237884c498ece5ea7cc&agente=CELPE&ano=2022'
+);
+const data = await response.json();
+const tarifademandatusd: number = data[0].tarifademandatusd;
+setTaxaIluminacao(tarifademandatusd);
+return tarifademandatusd;
+} catch (error) {
+console.log(error);
+throw new Error('Failed to fetch tarifa base data');
+}
+};
+
+//tarifaBandeira
+const fetchApiDataTarifaBandeira = async (): Promise<number> => {
+try {
+const response = await fetch(
+'https://apise.way2.com.br/v1/bandeiras?apikey=2163780d87ee4237884c498ece5ea7cc&datainicial=2023-03-01&datafinal=2023-03-31'
+);
+const data = await response.json();
+const value: number = data.items[0].value;
+setTarifaBandeira(value);
+return value;
+} catch (error) {
+console.log(error);
+throw new Error('Failed to fetch tarifa bandeira data');
+}
+
+};
+
+
+useEffect(() => {
+  const getTarifaData = async () => {
+    const tarifa = await fetchApiDataTarifa();
+    setTarifaConsumo(tarifa);
+  };
+  getTarifaData();
+}, []);
+
+useEffect(() => {
+  const getTarifaBaseData = async () => {
+    const tarifaBase = await fetchApiDataTarifaBase();
+    setTaxaIluminacao(tarifaBase);
+  };
+  getTarifaBaseData();
+}, []);
+
+useEffect(() => {
+  const getTarifaBandeiraData = async () => {
+    const tarifaBandeira = await fetchApiDataTarifaBandeira();
+    setTarifaBandeira(tarifaBandeira);
+  };
+  getTarifaBandeiraData();
+}, []);
+
+
+const [taxaIluminacao, setTaxaIluminacao] = useState<number | null>(null);
+const [tarifaConsumo, setTarifaConsumo] = useState<number | null>(null);
+const [tarifaBandeira, setTarifaBandeira] = useState<number | null>(null);
+
+
+
+
+let consumo = 0;
+const [consumoAtual, setConsumoAtual] = useState(consumo);
+
+let periodoDias = 0;
+const [Dias, setDias] = useState(periodoDias);
+
+let valorTotal = 0;
+const [novoValorTotal, setnovoValorTotal] = useState(consumo);
+
+let valorInicial = Number(localStorage.getItem('leituraInicial')) || null;
+const [novoValorInicial, setnovoValorInicial] = useState(valorInicial);
+
+
+const handleButtonClick = () => {
+  const leituraInicial: number = Number(leituraInicialRef.current?.value);
+  setnovoValorInicial(leituraInicial);
+  const leituraFinal: number = Number(leituraFinalRef.current?.value);
+  const dataInicial: Date = new Date(dataInicialRef.current?.value || '');
+  const dataFinal: Date = new Date(dataFinalRef.current?.value || '');
+
+  // Calcula a quantidade de dias entre as datas de leitura
+  const periodoDias = Math.ceil((dataFinal.getTime() - dataInicial.getTime()) / (1000 * 60 * 60 * 24));
+  setDias(periodoDias);
+
+  // Calcula o consumo de energia em kWh
+  const consumo = leituraFinal - leituraInicial;
+  setConsumoAtual(consumo);
+
+  // Calcula o valor da conta de energia elétrica
+  const taxaConsumoNumber: number = Number(tarifaConsumo);
+  const taxaIluminacaoNumber: number = Number(taxaIluminacao); 
+  const valorConsumo: number = (taxaConsumoNumber / 100) * consumo;
+  const valorTotal = valorConsumo + taxaIluminacaoNumber;
+  setnovoValorTotal(valorTotal);
+
+  // Salva o resultado no local storage
+  const simulacao: { periodo: string, consumo: string, valorTotal: string, tarifa: string, taxaIluminacao: string, dias: string } = {
+    periodo: `${dataInicial.toLocaleDateString()} a ${dataFinal.toLocaleDateString()}`,
+    consumo: `${consumo} kWh`,
+    valorTotal: `R$ ${valorTotal.toFixed(2)}`,
+    tarifa:`${tarifaConsumo}`,
+    taxaIluminacao:`${taxaIluminacao}`,
+    dias:`${periodoDias} Dias`
   };
 
-  const handleDate2Change = (e: ChangeEvent<HTMLInputElement>) => {
-    setDate2(e.target.value);
-  };
+  // Armazena os valores imediatamente após o clique do botão
+  localStorage.setItem('simulacao', JSON.stringify(simulacao));
+  localStorage.setItem('consumo', JSON.stringify(consumo));
+  localStorage.setItem('periodoDias', JSON.stringify(periodoDias));
+  localStorage.setItem('valorTotal', JSON.stringify(valorTotal));
+  localStorage.setItem('leituraInicial', leituraInicial.toString());
+  localStorage.setItem('dataInicial', dataInicial.toISOString());
+};
 
-  const handleNum1Change = (e: ChangeEvent<HTMLInputElement>) => {
-    setNum1(e.target.value);
-  };
+  
 
-  const handleNum2Change = (e: ChangeEvent<HTMLInputElement>) => {
-    setNum2(e.target.value);
-  };
+  useEffect(() => {
+    const consumoSalvo = JSON.parse(localStorage.getItem('consumo') || 'null');
+    const diasSalvos = JSON.parse(localStorage.getItem('periodoDias') || 'null');
+    const valorSalvo = JSON.parse(localStorage.getItem('valorTotal') || 'null');
 
-  const periodoDias = Math.floor((new Date(date2).getTime() - new Date(date1).getTime()) / (1000 * 60 * 60 * 24));
+    
+    
 
-  const handleButtonClick = () => {
-    // Aqui você pode implementar a lógica para verificar os valores dos inputs
-  };
+    if (consumoSalvo !== null) {
+      setConsumoAtual(consumoSalvo);
+    }
+  
+    if (diasSalvos !== null) {
+      setDias(diasSalvos);
+    }
+  
+    if (valorSalvo !== null) {
+      setnovoValorTotal(valorSalvo);
+    }
+
+
+  }, []);
+
+  useEffect(() => {
+    const dataInicialSalva = localStorage.getItem('dataInicial');
+    if (dataInicialSalva) {
+      const dataInicial = new Date(dataInicialSalva);
+      dataInicialRef.current.value = dataInicial.toISOString().slice(0, 10);
+    }
+  }, []);
+  
+ 
+ 
 
   return (
 
+    
+
    
     <div>
-    <S.StyledDisplayWrapper>
+     <S.StyledDisplayWrapper>
         <S.StyledDisplaykW>
-    <div>
-        <h3>Consumo Atual</h3>
-        <p style={{fontWeight: 'bold'}}>{`${(Number(num2) - Number(num1)).toFixed(2)} kWh`}</p>
-        <p>{`Periodo: ${periodoDias} Dias`}</p>
-    </div>
+          <div>
+            <h3>Consumo Atual</h3>
+            <p style={{ fontWeight: 'bold' }}>{`${consumoAtual} kWh`}</p>
+            <p>{`Periodo: ${Dias} Dias`}</p>
+          </div>
         </S.StyledDisplaykW>
 
         <S.StyledDisplayValor>
-    <div>
-        <h3>Valor</h3>
-        <p>R$148,20</p>
-    </div>
-         </S.StyledDisplayValor>
-    </S.StyledDisplayWrapper>
+          <div>
+            <h3>Valor</h3>
+            <p>{`R$${novoValorTotal}`}</p>
+          </div>
+        </S.StyledDisplayValor>
+      </S.StyledDisplayWrapper>
 
 
     <S.StyledInputs>
-  <div>
-  <label htmlFor="num1">Valor Inicial (kW):</label>
-    <input type="number" id="num1" value={num1} placeholder="" onChange={handleNum1Change} />
-    
-   
-    <label htmlFor="date2">Data atual:</label>
-    <input type="date" id="date2" value={date2} placeholder="dd/mm/aaaa" onChange={handleDate2Change} />
-   
-  </div>
+      <div>
+      <label htmlFor="leituraInicial">Valor Inicial (kW):</label>
+      <input type="number" id="leituraInicial" ref={leituraInicialRef} placeholder="Insira o valor inicial em kW" title="Valor Inicial (kW)" defaultValue={valorInicial}/>
+      <label htmlFor="leituraFinal">Valor Atual (kW):</label>
+      <input type="number" id="leituraFinal" ref={leituraFinalRef} placeholder="Insira o valor inicial em kW" title="Valor Inicial (kW)" />
 
-  <div>
-  <label htmlFor="date1">Data inicial:</label>
-    <input type="date" id="date1" value={date1} placeholder="dd/mm/aaaa" onChange={handleDate1Change} />
-   
 
-    <label htmlFor="num2">Valor Atual (kW):</label>
-    <input type="number" id="num2" value={num2} placeholder="" onChange={handleNum2Change} />
-  </div>
 
-  <button type='submit' onClick={handleButtonClick}>Verificar</button>
-</S.StyledInputs>
+     
+      </div>
+      
+      <div>
+      <label htmlFor="dataInicial">Data Inicial:</label>
+      <input type="date" id="dataInicial" ref={dataInicialRef} placeholder="" title="" />
+      <label htmlFor="dataFinal">Data Final:</label>
+      <input type="date" id="dataFinal" ref={dataFinalRef} placeholder="" title="" />
+  
+
+
+      
+      </div>
+
+      <button type='submit' onClick={handleButtonClick}>Verificar</button>
+    </S.StyledInputs>
 
    
    

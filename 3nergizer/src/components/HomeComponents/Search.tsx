@@ -1,4 +1,4 @@
-import React from "react";
+import React, {useState, useEffect} from "react";
 import * as S from "./styles";
 
 interface SearchProps {
@@ -6,13 +6,23 @@ interface SearchProps {
 }
 
 const Search = ({amount}: SearchProps) => {
+
+  const [myValue, setMyValue] = useState('');
+
+  useEffect(() => {
+    const storedValue = localStorage.getItem('valorTotal');
+    if (storedValue) {
+      setMyValue(storedValue);
+    }
+  }, []);
+
   return (
     <S.StyledSearch>
       <span>
         <p>Gasto Atual</p>
       </span>
       <span>
-        R${amount}
+        R${myValue}
       </span>
     </S.StyledSearch>
   );

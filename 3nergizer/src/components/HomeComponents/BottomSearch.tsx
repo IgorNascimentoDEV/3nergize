@@ -1,5 +1,6 @@
 import React from "react";
 import * as S from "./styles";
+import { Link } from "react-router-dom";
 
 interface BottomSearchProps {
 }
@@ -7,7 +8,9 @@ interface BottomSearchProps {
 const BottomSearch = ({ }: BottomSearchProps) => {
     return (
         <S.StyledBottomSearch>
-            <h6>Consultar</h6>
+            <Link to="/Calculator" className="hvr-float">
+                <h6>Consultar</h6>
+            </Link>
         </S.StyledBottomSearch>
     );
 };
