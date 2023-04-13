@@ -13,7 +13,6 @@ const dataFinalRef = useRef<HTMLInputElement>(null);
 
 
 
-
 // Consuming the electricity sector api
 const fetchApiDataTarifa = async (): Promise<number> => {
 try {
@@ -127,7 +126,7 @@ const handleButtonClick = () => {
   // Calcula o valor da conta de energia elétrica
   const taxaConsumoNumber: number = Number(tarifaConsumo);
   const taxaIluminacaoNumber: number = Number(taxaIluminacao); 
-  const valorConsumo: number = (taxaConsumoNumber / 10) * consumo;
+  const valorConsumo: number = (taxaConsumoNumber / 100) * consumo;
   const valorTotal = valorConsumo + taxaIluminacaoNumber;
   setnovoValorTotal(valorTotal);
 
@@ -184,8 +183,11 @@ const handleButtonClick = () => {
   }, []);
   
  
+ 
 
   return (
+
+    
 
    
     <div>
