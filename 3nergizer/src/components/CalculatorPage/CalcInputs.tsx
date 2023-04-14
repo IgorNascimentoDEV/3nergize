@@ -176,7 +176,7 @@ const handleButtonClick = () => {
 
   useEffect(() => {
     const dataInicialSalva = localStorage.getItem('dataInicial');
-    if (dataInicialSalva) {
+    if (dataInicialSalva && dataInicialRef.current) { // Adicionado teste de nulidade
       const dataInicial = new Date(dataInicialSalva);
       dataInicialRef.current.value = dataInicial.toISOString().slice(0, 10);
     }
@@ -212,7 +212,7 @@ const handleButtonClick = () => {
     <S.StyledInputs>
       <div>
       <label htmlFor="leituraInicial">Valor Inicial (kW):</label>
-      <input type="number" id="leituraInicial" ref={leituraInicialRef} placeholder="Insira o valor inicial em kW" title="Valor Inicial (kW)" defaultValue={valorInicial}/>
+      <input type="number" id="leituraInicial" ref={leituraInicialRef} placeholder="Insira o valor inicial em kW" title="Valor Inicial (kW)" defaultValue={valorInicial?.toString()}/>
       <label htmlFor="leituraFinal">Valor Atual (kW):</label>
       <input type="number" id="leituraFinal" ref={leituraFinalRef} placeholder="Insira o valor inicial em kW" title="Valor Inicial (kW)" />
 

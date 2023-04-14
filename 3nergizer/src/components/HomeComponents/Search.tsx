@@ -16,7 +16,9 @@ const Search = ({amount}: SearchProps) => {
     }
   }, []);
 
-  let valor = parseInt(myValue);
+  
+  let valor = parseInt(myValue || '0');
+
   
   return (
     <S.StyledSearch>
