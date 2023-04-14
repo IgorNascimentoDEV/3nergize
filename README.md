@@ -15,4 +15,7 @@
  
  <h2>Paginas</h2>
 
-<img src="\3nergize\TESTES\img\Captura de tela 2023-04-14 163625.png" />
+![Captura de tela 2023-04-14 163625](https://user-images.githubusercontent.com/103793795/232141790-a83e680b-c30e-4393-9d31-e4f1a8de5d95.png)
+![Captura de tela 2023-04-14 165112](https://user-images.githubusercontent.com/103793795/232142468-cb9070bc-fa78-4e91-bc7b-b8d6f633f11a.png)
+![Captura de tela 2023-04-14 165243](https://user-images.githubusercontent.com/103793795/232142477-208dff02-3650-495d-85e2-e0caf5a5f0f3.png)
+
