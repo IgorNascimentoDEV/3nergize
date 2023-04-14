@@ -14,10 +14,10 @@
  </p>
  
  <h2>Paginas</h2>
+![Consulta](https://user-images.githubusercontent.com/103793795/232144817-41a297bf-9397-4c9f-af98-f4e91b3131ab.png)
+![Análise (1)](https://user-images.githubusercontent.com/103793795/232144829-31a7a55f-bad5-429b-8f1c-db21791eeaa6.png)
+![Calculo (1)](https://user-images.githubusercontent.com/103793795/232144840-3456b1f8-53e7-4a6a-ad57-8e71d5f487a7.png)
 
-![Consulta](https://user-images.githubusercontent.com/103793795/232144216-e5967354-e45a-476f-b3f8-5ad25ceda99c.png)
-![Calculo](https://user-images.githubusercontent.com/103793795/232144226-390784d8-d845-4f95-b060-9736068223bb.png)
-![Análise](https://user-images.githubusercontent.com/103793795/232144229-8663afe7-e034-483d-a55a-7e7febb059e1.png)
 
 
 
