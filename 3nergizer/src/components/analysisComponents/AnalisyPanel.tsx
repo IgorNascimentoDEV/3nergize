@@ -23,14 +23,23 @@ const AnalisyPanel = ({}: AnalisyPanelProps) => {
   }, []);
 
   let valor = myValue;
-  let valorTotal = parseInt(valor)
+  let valorTotal = parseInt(valor) || 0
 
-  let g = valorTotal * 0.40; //geração
-  let t = valorTotal * 0.03 //transmissão
-  let d = valorTotal * 0.16 //distribuição
-  let e = valorTotal * 0.09 //encargos
-  let tri =valorTotal * 0.31 // tributos
+  let g = 0
+  let t = 0
+  let d = 0
+  let e = 0
+  let tri = 0
+
+  if(valorTotal > 0){
+    g = valorTotal * 0.40 ; //geração
+   t = valorTotal * 0.03 //transmissão
+   d = valorTotal * 0.16 //distribuição
+   e = valorTotal * 0.09 //encargos
+   tri =valorTotal * 0.31 // tributos
   
+  }
+
   return (
     <S.StyledAnalisyPanel>
       <AnalisyPanelItem
