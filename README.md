@@ -15,9 +15,11 @@
  
  <h2>Paginas</h2>
  
-![Consulta](https://user-images.githubusercontent.com/103793795/232231448-6c64efad-a322-41c1-8c64-8c5dd985669b.png)
-![Calculo](https://user-images.githubusercontent.com/103793795/232231595-d8df3c74-55d8-4fe3-99f9-36400e381ae8.png)
-![Análise](https://user-images.githubusercontent.com/103793795/232231626-6d402485-cdc2-4cb5-a2c4-258470033cbb.png)
+![Consulta](https://user-images.githubusercontent.com/103793795/232232120-22b1056d-e021-4de9-853a-d0b7f2621656.png)
+![Calculo (1)](https://user-images.githubusercontent.com/103793795/232232131-86bd0c65-3526-4f72-a136-57a0f6f739e9.png)
+![Análise (1)](https://user-images.githubusercontent.com/103793795/232232140-15a2b360-bac2-4cd5-a9e5-ef69e2bec316.png)
+
+
 
 
 
